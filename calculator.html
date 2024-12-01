@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" href="Assets/picture/logofridem.jpeg" type="image/x-icon">
+    <title>Welcome to Website</title>
+</head>
+<body class="bg-gray-400 font-sans">
+    <!-- Header Section -->
+    <header class="bg-green-800 text-white py-6 text-center">
+        <h1 class="text-4xl font-bold">Portofolio</h1>
+    </header>
+    <!-- Main Content Container -->
+    <div class="container mx-auto p-6 grid grid-cols-1 md:grid-cols-4 gap-3">
+        <!-- Menu Section -->
+        <div class="bg-green-800 text-white p-6 rounded-lg shadow-lg">
+            <ul class="space-y-4">
+                <li><a href="index.html" class="text-burlywood text-xl hover:bg-blue-300 py-2 px-4 rounded">Home</a></li>
+                <li><a href="about.html" class="text-burlywood text-xl hover:bg-blue-300 py-2 px-4 rounded">About</a></li>
+                <li><a href="portofolio.html" class="text-burlywood text-xl hover:bg-blue-300 py-2 px-4 rounded">Portofolio</a></li>
+                <li><a href="calculator.html" class="text-burlywood text-xl hover:bg-blue-300 py-2 px-4 rounded">Calculator</a></li>
+                <li><a href="Registration.html" class="text-burlywood text-xl hover:bg-blue-300 py-2 px-4 rounded">Registration Form</a></li>
+            </ul>
+        </div>
+        <!-- Main Content Section -->
+        <div class="bg-white shadow-lg justify-items-center p-6 rounded lg:col-span-2">
+            <h1 class="text-4xl font-bold py-4">A Simple Calculator</h1>
+    <div class="w-80 p-4 bg-gray-600 rounded-lg shadow-lg grid grid-cols-4 gap-2">
+        <div id="display" class="col-span-4 h-16 text-3xl text-right text-gray-800 bg-white rounded-lg p-4 overflow-hidden">0</div>
+
+        <button onclick="press('7')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">7</button>
+        <button onclick="press('8')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">8</button>
+        <button onclick="press('9')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">9</button>
+        <button onclick="press('/')" class="bg-blue-500 text-white font-bold py-4 rounded-lg hover:bg-blue-400">/</button>
+
+        <button onclick="press('4')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">4</button>
+        <button onclick="press('5')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">5</button>
+        <button onclick="press('6')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">6</button>
+        <button onclick="press('*')" class="bg-blue-500 text-white font-bold py-4 rounded-lg hover:bg-blue-400">*</button>
+
+        <button onclick="press('1')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">1</button>
+        <button onclick="press('2')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">2</button>
+        <button onclick="press('3')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">3</button>
+        <button onclick="press('-')" class="bg-blue-500 text-white font-bold py-4 rounded-lg hover:bg-blue-400">-</button>
+
+        <button onclick="press('0')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">0</button>
+        <button onclick="press('.')" class="bg-white text-gray-800 font-bold py-4 rounded-lg hover:bg-gray-200">.</button>
+        <button onclick="clearConsole()" class="bg-red-500 text-white font-bold py-4 rounded-lg hover:bg-red-400">C</button>
+        <button onclick="press('+')" class="bg-blue-500 text-white font-bold py-4 rounded-lg hover:bg-blue-400">+</button>
+
+        <button class="col-span-4 bg-green-500 text-white font-bold py-4 rounded-lg hover:bg-green-400" onclick="calculate()">=</button>
+    </div>
+    <script>
+        let expression = '';
+
+        function press(value) {
+            // Prevent multiple decimal points in a single number
+            if (value === '.' && expression.endsWith('.')) return;
+
+            expression += value;
+            updateDisplay();
+        }
+
+        function calculate() {
+            try {
+                const result = eval(expression);
+                expression = result.toString();
+                updateDisplay();
+            } catch (error) {
+                console.error("Error: Invalid Expression!");
+                expression = '';
+                updateDisplay();
+            }
+        }
+
+        function clearConsole() {
+            expression = '';
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.getElementById("display").innerText = expression || '0';
+        }
+</script>
+        </div>
+        <!-- Sidebar Section (Optional) -->
+        <div class="bg-green-800 text-white p-6 text-center rounded-lg shadow-lg">
+            <h2 class="text-sm">Additional Sidebar Content Here</h2>
+            <p><b>social Media-links</b></p>
+            <li><a href="https://www.instagram.com/ithomully/ w-40"><i>Instagram</i></a>
+                <a><img src="instagram.jpeg"class="w-20 h-auto mx-auto mb-1 rounded-lg"></a>
+            <li><a href="https://www.facebook.com/itho.m.96/"><i>Facebook</i></a>
+                    <a><img src="facebook.jpeg"class="w-20 h-auto mx-auto mb-1 rounded-lg"></a>
+            </li>
+        </div>
+    <!-- Footer Section -->
+    <footer class="bg-green-800 text-white py-4 text-center text-sm">
+        <p>&copy; 2024 All rights reserved.</p>
+    </footer>
+</body>
+</html>
